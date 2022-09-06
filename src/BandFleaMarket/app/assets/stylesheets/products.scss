@@ -1,0 +1,180 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.big-div{
+  text-align: center;
+  width: 100%;
+  line-height: 1.5em;
+}
+
+.div-a{
+  text-align: center;
+
+}
+
+.card-body a{
+
+  font-size: 3rem;
+  border: 1px solid #32ffff;
+  padding: 15px;
+  border-radius: 10px;
+}
+.container{
+  justify-content:center;
+  align-items:center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover; 
+  display: flex;
+  text-align: center;
+  height: 450px;
+  width: 100%;
+  border: 1px solid;
+  margin-top: 10px;
+}
+
+.c1{
+  background-image: url("pexels-stephen-niemeier-68710.jpg");
+}
+
+.c2{
+  background-image: url("pexels-bartek-leszczyński-4133133.jpg");
+}
+.c3{
+  
+  background-image: url("pexels-pixabay-164903.jpg");
+}
+.c4{
+  
+  background-image: url("pexels-dmitry-demidov-3783471.jpg");
+}
+
+
+
+.card-text{
+  font-size: 30px;
+  line-height: 1.5em;
+}
+
+i {
+    font-size:25px;
+    color:white;
+  }
+  
+
+
+
+  *,*:before,*:after {
+    box-sizing:border-box;
+  }
+  
+  .page-wrapper {
+    min-height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    button {
+      padding:20px;
+      border:none;
+      
+      position:relative;
+      outline:none;
+      border-radius:5px;
+
+      font-size:14px;
+      .cart-item {
+        position:absolute;
+        height:24px;
+        width:24px;
+        top:-10px;
+        right:-10px;
+        &:before {
+          content:'1';
+          display:block;
+          line-height:24px;
+          height:24px;
+          width:24px;
+          font-size:12px;
+          font-weight:600;
+          background:#2bd156;
+          color:white;
+          border-radius:20px;
+          text-align:center;
+        }
+      }
+      &.sendtocart {
+        .cart-item {
+          display:block;
+          animation: xAxis 1s forwards cubic-bezier(1.000,0.440,0.840,0.165);
+          &:before {
+            animation: yAxis 1s alternate forwards cubic-bezier(0.165, 0.840, 0.440, 1.000);
+          }
+        }
+      }
+    }
+  }
+  
+  .cart {
+    position:fixed;
+    bottom: 20px;
+    right:20px;
+    width:50px;
+    height:50px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:5px;
+    i {
+      font-size:40px;
+      color:white;
+    }
+    &:before {
+      content:attr(data-totalitems);
+      font-size:12px;
+      font-weight:600;
+      position:absolute;
+      top:-12px;
+      right:-12px;
+      background:#2bd156;
+      line-height:24px;
+      padding:0 5px;
+      height:24px;
+      min-width:24px;
+      color:white;
+      text-align:center;
+      border-radius:24px;
+    }
+    &.shake {
+      animation: shakeCart .4s ease-in-out forwards;
+    }
+  }
+  
+  @keyframes xAxis {
+    100% {
+      transform: translateX(calc(50vw - 105px));
+    }
+  }
+  
+  @keyframes yAxis {
+    100% {
+      transform: translateY(calc(-50vh + 75px));
+    }
+  }
+  
+  @keyframes shakeCart {
+    25% {
+      transform:translateX(6px)
+    }
+    50% {
+      transform:translateX(-4px);
+    }
+    75% {
+      transform:translateX(2px);
+    }
+    100% {
+      transform:translateX(0);
+    }
+  }

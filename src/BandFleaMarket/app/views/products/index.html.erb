@@ -1,0 +1,89 @@
+<div class="reg" style="margin:0 auto;">
+<p id="notice"><%= notice %></p>
+
+<% if user_signed_in? %>
+<%= render 'shared/cart' %>
+<% end %>
+
+
+
+<table style="margin:0 auto;">
+  <thead>
+    <tr>
+      <th style="text-align:center;">Picture</th>
+      <th style="text-align:center;">Title</th>
+      <th style="text-align:center;">Description</th>
+      <th style="text-align:center;">Seller</th>
+      <th style="text-align:center;">Sold</th>
+      <th style="text-align:center;">Price</th>
+      <th style="text-align:center;">Category</th>
+      <th style="text-align:center;">Sort</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products_per_page.each do |product| %>
+    <tr>
+      <td style="text-align:center;text-decoration: none;"><%= link_to image_tag(product.picture, height: "150"), product %>
+      </td>
+      <td style="text-align:center;"><%= link_to product.title, product, style:"color:#32CCCC;text-decoration: none;" %></td>
+      <td style="text-align:center;"><%= product.description %></td>
+      <td style="text-align:center;"><%= product.user.username %></td>
+      <%# check the sold situation of the product %>
+      <% if product.sold == false %>
+      <td style="text-align:center;">Not yet</td>
+      <% else %>
+      <td style="text-align:center;">Sold</td>
+      <% end %>
+      <td style="text-align:center;"><%= product.price %></td>
+      <td style="text-align:center;"><%= product.category.category %></td>
+      <td style="text-align:center;"><%= product.sort.sort %></td>
+      <td>
+      <% if !user_signed_in? %>
+        <%= link_to "Sign in to buy", new_user_session_path, style:"color:#32CCCC;text-decoration: none;" %>
+      <% end %>
+        <% if user_signed_in? %>
+          <%# check if the current user already add this product to their cart %>
+          <% already_add_to_cart = CartProduct.find_by(cart_id: @current_cart.id, product_id: product.id) %>
+          <% if already_add_to_cart == nil %>
+            <%# check whether the product is sold %>
+            <% if product.sold == true && current_user.id != product.user_id %>
+                Already Sold
+            <%# check the product is belong to currents user %>
+            <% elsif current_user.id == product.user_id %>
+                This is your product
+            <% elsif current_user.id != product.user_id %>
+                <div class="page-wrapper">
+                  <%= button_to cart_products_path(:product_id => product.id), id:"addtocart", style:"color:#32CCCC;text-decoration: none;" do %>
+                    <%= "Add to cart" %>
+                    <span class="cart-item"></span>
+                  <% end %>
+                </div>
+            <% end %>
+          <% else  %>
+            <% if product.sold == true %>
+              Already Sold
+            <% else %>
+              Already Added To Cart
+            <% end %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+
+
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if @page > 0 %>
+<%= link_to "Previous Page", products_path(page: @page - 1), style:"color:#32CCCC;text-decoration: none;" %>
+<% end %>
+<% if @page < @products.length / 5  %>
+<%= link_to "Next Page", products_path(page: @page + 1), style:"color:#32CCCC;text-decoration: none;" %>
+<% end %>
+
+</div>
+

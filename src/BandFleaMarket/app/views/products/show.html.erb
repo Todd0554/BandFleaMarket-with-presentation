@@ -1,0 +1,61 @@
+<div class="reg" style="font-size:1.2em;">
+<p id="notice" style="font-size: 1.4em;color:#32CCCC"><%= notice %></p>
+<%= render 'shared/cart' %>
+
+
+<%= image_tag(@product.newsizeimage)  %>
+<p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @product.user_id %>
+</p>
+
+<p>
+  <strong>Sold:</strong>
+  <%= @product.sold %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @product.category.category %>
+</p>
+<p>
+  <strong>Sort:</strong>
+  <%= @product.sort.sort %>
+</p>
+
+<% if user_signed_in? %>
+<%# check if the product is belong to current user and whether this product is sold %>
+<% if @product.sold == false && current_user.id != @product.user_id %>
+  <%= button_to 'Buy now', order_path, style:"color:#32CCCC;" %>
+<% elsif current_user.id == @product.user_id %>
+        <p style="color:#32cccc;font-size:1.3em;">
+        You can't buy product belongs to you.
+        </p> 
+<% else %>
+  <p>SOLD</p>
+<% end %>
+<% else %>
+<%= link_to "Sign in to buy", new_user_session_path, style:"color:#32CCCC;text-decoration: none;" %>
+<% end %>
+
+<br>
+
+
+<%= link_to 'Back', products_path, style:"text-decoration: none;font-size:1.4em;color:#32CCCC;" %>
+
+</div>

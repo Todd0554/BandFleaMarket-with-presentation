@@ -1,0 +1,76 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require normalize
+ *= require skeleton
+ *= require font-awesome
+ */
+ @import "bootstrap/scss/bootstrap";
+a{
+    text-decoration: none;
+}
+
+.field, th, td{
+    color: #fff;
+
+}
+
+ body{
+    
+    background-image: url("pexels-bryan-catota-3756766.jpg");
+    
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover; 
+    
+    color: #fff;
+}
+
+
+section{
+    margin: 0 50px;
+}
+
+
+
+ul{
+    text-align: center;
+    list-style: none;
+}
+li{
+    display: inline-block;
+}
+
+.reg{
+    
+    text-align: center;
+}
+
+h1, h2, p{
+    color: #fff;
+}
+
+
+.big-section{
+    margin: 20px 0;
+}
+
+nav{
+    font-size: 1.1em;
+}
+
+.dropdown{
+    font-size: 1.1em;
+    text-align: center;
+}
