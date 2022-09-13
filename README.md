@@ -2,7 +2,8 @@
 ********************************
 
 ## Github and URL
-#### Heroku URL: https://band-fleamarket.herokuapp.com/
+#### Railway URL: https://bandfleamarket0554-production.up.railway.app/
+#### Heroku URL(expired after 28.11.2022): https://band-fleamarket.herokuapp.com/
 #### Github: https://github.com/Todd0554/BandFleaMarket
 #### Presentation Video: https://www.youtube.com/watch?v=nBtqX4cnlQM
 ## Description of BandFleaMarket
